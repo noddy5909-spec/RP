@@ -1,0 +1,10 @@
+{
+  "name": "reading-partner",
+  "version": "1.0.0",
+  "description": "중학생용 국어 독서 보조 웹 (추론 멘토 AI)",
+  "private": true,
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@supabase/supabase-js": "^2.99.3"
+  }
+}
