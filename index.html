@@ -1453,100 +1453,133 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* 대화 마치기 요약 말풍선 — 랜딩과 동일 배경 */
+    .chat-bubble.ai:has(.storyboard) {
+      background: var(--bg-setup);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: none;
+    }
+
+    .chat-bubble.ai:has(.storyboard) .label.word-galpi {
+      color: var(--chat-accent-text);
+    }
+
+    /* 대화 마치기 요약 — 랜딩 배경(폴백: 카드 단독) / :has 지원 시 말풍선과 통합 */
     .storyboard {
       margin-top: 8px;
       padding: 16px 16px 14px;
-      border-radius: var(--ui-radius-card);
-      border: var(--ui-border);
-      background: linear-gradient(180deg, #ffffff 0%, var(--color-sky-soft) 100%);
-      box-shadow: var(--shadow-sticker-sm);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      background: var(--bg-setup);
+      box-shadow: none;
       position: relative;
       overflow: hidden;
     }
 
+    .chat-bubble.ai:has(.storyboard) .storyboard {
+      margin-top: 8px;
+      padding: 4px 0 0;
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      overflow: visible;
+    }
+
     .storyboard-step {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: flex-start;
-      padding: 10px 0;
+      padding: 8px 0;
     }
 
     .storyboard-step + .storyboard-step {
-      border-top: 1px solid rgba(55, 71, 79, 0.06);
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
     }
 
     .storyboard-step-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--color-sky-soft);
+      width: 26px;
+      height: 26px;
+      min-width: 26px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.55);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      box-shadow: var(--shadow-sticker-sm);
-      border: var(--sticker-outline);
+      box-shadow: none;
+      border: 1px solid rgba(126, 184, 245, 0.28);
     }
 
     .storyboard-step-num {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: var(--color-sky-deep);
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.72rem;
+      color: var(--chat-accent-text);
       line-height: 1;
     }
 
     .storyboard-step-title {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      color: var(--text-dark);
-      font-size: 0.92rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      color: rgba(55, 71, 79, 0.88);
+      font-size: 0.78rem;
+      letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
 
     .storyboard-step-text {
-      color: var(--text-soft);
-      font-size: var(--text-sm);
-      line-height: 1.7;
+      color: rgba(55, 71, 79, 0.82);
+      font-size: 0.8125rem;
+      line-height: 1.65;
       white-space: pre-wrap;
       word-break: break-word;
+      font-weight: 400;
     }
 
     .storyboard-encourage {
-      margin-top: 10px;
-      padding: 12px 14px;
-      border-radius: var(--ui-radius-card);
-      background: linear-gradient(135deg, var(--color-sky-soft) 0%, #ffffff 50%, var(--ref-lavender) 100%);
-      color: var(--text-dark);
-      font-weight: 800;
-      font-family: var(--font-heading);
-      border: var(--ui-border);
-      box-shadow: var(--shadow-sticker-sm);
+      margin-top: 12px;
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: rgba(84, 110, 122, 0.88);
+      font-weight: 500;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: none;
     }
 
     .btn-share-storyboard {
       margin-top: 12px;
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: linear-gradient(145deg, var(--color-gold-soft) 0%, var(--color-gold) 100%);
-      border: var(--sticker-outline);
-      color: var(--text-dark);
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(126, 184, 245, 0.35);
+      color: var(--chat-accent-text);
       cursor: pointer;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      box-shadow: var(--shadow-sticker-sm);
-      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: -0.02em;
+      box-shadow: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .btn-share-storyboard:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-      box-shadow: var(--shadow-sticker);
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(126, 184, 245, 0.5);
+      transform: none;
+      filter: none;
+      box-shadow: none;
     }
 
     .btn-share-storyboard:active {
-      transform: translateY(0);
+      opacity: 0.92;
     }
     
   </style>
@@ -2291,18 +2324,125 @@
         }
       }
 
-      function extractJsonObject(text) {
-        if (!text) return null;
-        var s = String(text);
-        var start = s.indexOf('{');
-        var end = s.lastIndexOf('}');
-        if (start === -1 || end === -1 || end <= start) return null;
-        var candidate = s.slice(start, end + 1);
-        try {
-          return JSON.parse(candidate);
-        } catch (e) {
-          return null;
+      /** AI 응답에서 ```json ... ``` 제거 */
+      function stripAiCodeFence(text) {
+        if (!text) return '';
+        var s = String(text).trim();
+        var block = s.match(/```(?:json)?\s*([\s\S]*?)```/i);
+        if (block) return block[1].trim();
+        if (s.indexOf('```') === 0) {
+          s = s.replace(/^```(?:json)?\s*\r?\n?/i, '');
+          s = s.replace(/\r?\n?```\s*$/i, '');
         }
+        return s.trim();
+      }
+
+      /** 문자열 안의 { } 를 무시하고 첫 JSON 객체를 균형 있게 잘라 파싱 */
+      function extractJsonObjectBalanced(text) {
+        if (!text) return null;
+        var s = stripAiCodeFence(text);
+        var start = s.indexOf('{');
+        if (start === -1) return null;
+        var depth = 0;
+        var inStr = false;
+        var esc = false;
+        for (var j = start; j < s.length; j++) {
+          var c = s[j];
+          if (inStr) {
+            if (esc) {
+              esc = false;
+              continue;
+            }
+            if (c === '\\') {
+              esc = true;
+              continue;
+            }
+            if (c === '"') inStr = false;
+            continue;
+          }
+          if (c === '"') {
+            inStr = true;
+            continue;
+          }
+          if (c === '{') depth++;
+          else if (c === '}') {
+            depth--;
+            if (depth === 0) {
+              var chunk = s.slice(start, j + 1);
+              try {
+                return JSON.parse(chunk);
+              } catch (e) {
+                return null;
+              }
+            }
+          }
+        }
+        return null;
+      }
+
+      /** step1/step2/step3 키 정규화 (대소문자·별칭) */
+      function normalizeStoryboardData(obj) {
+        if (!obj || typeof obj !== 'object') return null;
+        function pick(keys) {
+          for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            if (obj[k] != null && String(obj[k]).trim() !== '') return String(obj[k]).trim();
+          }
+          return '';
+        }
+        var step1 = pick(['step1', 'Step1', 'STEP1', '출발점', 'step_1']);
+        var step2 = pick(['step2', 'Step2', 'STEP2', '발견', 'step_2']);
+        var step3 = pick(['step3', 'Step3', 'STEP3', '도달점', 'step_3']);
+        if (!step1 && !step2 && !step3) return null;
+        return { step1: step1, step2: step2, step3: step3 };
+      }
+
+      /** JSON 파싱 실패 시: 따옴표 필드 느슨하게 추출 후 단락 분할 */
+      function fallbackStoryboardFromText(raw) {
+        var s = stripAiCodeFence(raw);
+        s = s.replace(/^```json\s*/gim, '').replace(/```\s*$/gm, '').trim();
+        var out = { step1: '', step2: '', step3: '' };
+        var i;
+        for (i = 1; i <= 3; i++) {
+          var key = 'step' + i;
+          var re = new RegExp('"' + key + '"\\s*:\\s*"((?:\\\\.|[^"\\\\])*)"', 'i');
+          var m = re.exec(s);
+          if (m) {
+            out['step' + i] = m[1]
+              .replace(/\\n/g, '\n')
+              .replace(/\\r/g, '\r')
+              .replace(/\\"/g, '"')
+              .replace(/\\\\/g, '\\');
+          }
+        }
+        if (out.step1 || out.step2 || out.step3) return out;
+        var parts = s.split(/\n\n+/).map(function (p) {
+          return p.trim();
+        }).filter(Boolean);
+        if (parts.length >= 3) {
+          return { step1: parts[0], step2: parts[1], step3: parts[2] };
+        }
+        if (parts.length === 2) {
+          return { step1: parts[0], step2: parts[1], step3: '' };
+        }
+        if (parts.length === 1 && parts[0].length > 0) {
+          return { step1: parts[0], step2: '', step3: '' };
+        }
+        return { step1: s.slice(0, 4000), step2: '', step3: '' };
+      }
+
+      function parseStoryboardReply(reply) {
+        if (!reply) return null;
+        var s0 = String(reply);
+        var parsed = extractJsonObjectBalanced(s0);
+        if (!parsed) {
+          try {
+            parsed = JSON.parse(stripAiCodeFence(s0));
+          } catch (e) {}
+        }
+        var norm = normalizeStoryboardData(parsed);
+        if (norm) return norm;
+        return fallbackStoryboardFromText(s0);
       }
 
       function derivePassageTitle(passage) {
@@ -2380,11 +2520,9 @@
         var prompt =
           '너는 독서 파트너 갈피야. 아래는 학생과 갈피의 대화 기록이야.\n' +
           '학생의 사고가 어떻게 변화했는지 흐름을 분석해서 3단계로 요약해줘.\n' +
-          '반드시 아래 JSON 형식만 출력해줘(추가 설명 금지).\n' +
-          '{\"step1\":\"...\",\"step2\":\"...\",\"step3\":\"...\"}\n\n' +
-          '[Step 1: 출발점] 처음 지문을 읽고 가졌던 생각/추측\n' +
-          '[Step 2: 발견] 대화 중 새롭게 깨닫거나 주목한 문장/단서\n' +
-          '[Step 3: 도달점] 최종적으로 수정되거나 깊어진 생각\n\n' +
+          '반드시 아래 키만 가진 JSON 한 덩어리만 출력해. 마크다운·코드블록(역따옴표)·설명 문장은 절대 넣지 마.\n' +
+          '{"step1":"(출발점) 처음 지문을 읽고 가졌던 생각/추측","step2":"(발견) 대화 중 새롭게 깨닫거나 주목한 점","step3":"(도달점) 최종적으로 깊어지거나 바뀐 생각"}\n' +
+          '각 값은 한국어로 2~4문장, JSON 문자열 안에서는 줄바꿈은 \\n 으로 이스케이프해.\n\n' +
           '지문:\n' + currentPassage + '\n\n' +
           '대화 기록:\n' + (transcript || '(대화 기록 없음)');
 
@@ -2393,12 +2531,10 @@
         sendToAI(prompt)
           .then(function (reply) {
             removeLoadingBubble();
-            var parsed = extractJsonObject(reply);
-            var data = parsed || {
-              step1: reply,
-              step2: '',
-              step3: ''
-            };
+            var data = parseStoryboardReply(reply);
+            if (!data) {
+              data = { step1: '', step2: '', step3: '' };
+            }
 
             var html = buildStoryboardHtml(data, derivePassageTitle(currentPassage));
             addMessage(html, false, true);
