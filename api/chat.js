@@ -7,7 +7,9 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { passage, messages } = req.body;
+    const { passage, messages, storyboard } = req.body;
+    /** 대화 마치기 요약(JSON) 전용 — 일반 채팅의 짧은 답변 한도·280자 규칙과 충돌하면 응답이 중간에 잘림 */
+    const isStoryboard = !!storyboard;
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
@@ -15,11 +17,10 @@ module.exports = async (req, res) => {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    
-    // 모델 설정 및 '갈피'의 정체성 주입 (systemInstruction)
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.5-flash",
-      systemInstruction: `
+
+    const passageText = typeof passage === "string" ? passage : "";
+
+    const systemInstructionChat = `
         당신은 중학생의 독서를 돕는 다정하고 지혜로운 독서 파트너 '갈피'입니다.
         학생이 지문을 사실적·추론적·비판적 읽기의 관점에서 깊이 있게 탐구하도록 돕는 것이 당신의 목표입니다.
 
@@ -34,8 +35,23 @@ module.exports = async (req, res) => {
         8. 간결함(필수): 한 번의 답변은 짧게 유지하세요. 대략 3~5문장 이내, 한국어 기준 약 280자 이내를 넘기지 않도록 하세요. 긴 설명·지문 긴 인용·같은 말 반복·나열은 피하세요. 공감 한두 문장 + (필요 시) 질문 하나로 충분합니다. 꼭 필요한 내용만 골라 말하세요.
 
         【오늘 우리가 함께 읽을 글】:
-        ${passage}
-      `
+        ${passageText}
+      `;
+
+    const systemInstructionStoryboard = `
+        당신은 중학생의 독서를 돕는 독서 파트너 '갈피'입니다.
+        이번 턴은 "대화 마치기" 요약용입니다. 사용자 메시지에 적힌 키(step1, step2, step3)만 가진 **순수 JSON 한 덩어리**만 출력하세요.
+        마크다운·코드블록(역따옴표)·설명 문장·인사말은 절대 넣지 마세요.
+        JSON은 반드시 닫는 중괄호까지 완성하고, 각 값은 사용자가 요청한 분량(예: 2~4문장)을 채우세요. 일반 채팅의 "280자 이내" 규칙은 이번 턴에는 적용하지 않습니다.
+
+        【오늘 우리가 함께 읽을 글】:
+        ${passageText}
+      `;
+    
+    // 모델 설정 및 '갈피'의 정체성 주입 (systemInstruction)
+    const model = genAI.getGenerativeModel({ 
+      model: "gemini-2.5-flash",
+      systemInstruction: isStoryboard ? systemInstructionStoryboard : systemInstructionChat,
     });
 
     // Gemini 형식으로 대화 기록 변환 (최근 메시지 이전까지)
@@ -44,11 +60,13 @@ module.exports = async (req, res) => {
       parts: [{ text: m.content }]
     }));
 
-    // 대화 세션 시작 (출력이 과도하게 길어지지 않도록 토큰 상한)
+    // 일반 채팅은 짧게, 스토리보드 요약은 JSON·3단계 문장이 들어가므로 출력 토큰을 크게 둠
+    const maxOutputTokens = isStoryboard ? 2048 : 450;
+
     const chat = model.startChat({
       history,
       generationConfig: {
-        maxOutputTokens: 450,
+        maxOutputTokens,
       },
     });
     
