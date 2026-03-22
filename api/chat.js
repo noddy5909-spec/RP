@@ -60,13 +60,21 @@ module.exports = async (req, res) => {
       parts: [{ text: m.content }]
     }));
 
-    // 일반 채팅은 짧게, 스토리보드 요약은 JSON·3단계 문장이 들어가므로 출력 토큰을 크게 둠
-    const maxOutputTokens = isStoryboard ? 2048 : 450;
+    /**
+     * Gemini 2.5 계열은 내부 추론(thinking) 토큰이 출력 상한(maxOutputTokens)에 포함됩니다.
+     * 값을 너무 낮게 두면(예: 450) 추론에 대부분이 쓰이고 본문 답변이 문장 중간에서 잘립니다.
+     * thinkingBudget: 0 으로 추론을 끄면 상한이 실제 답변 텍스트에 쓰이며,
+     * 시스템 지시의 "짧게(280자 등)"는 모델이 내용 길이를 조절하는 데만 쓰이게 됩니다.
+     */
+    const maxOutputTokens = isStoryboard ? 2048 : 1024;
 
     const chat = model.startChat({
       history,
       generationConfig: {
         maxOutputTokens,
+        thinkingConfig: {
+          thinkingBudget: 0,
+        },
       },
     });
     
