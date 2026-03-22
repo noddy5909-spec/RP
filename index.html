@@ -74,7 +74,7 @@
       --chat-pastel-blue: var(--ref-blue);
       --chat-pastel-mauve: #F3E5F5;
       --chat-pastel-mint: var(--color-mint-soft);
-      --chat-surface-bg: linear-gradient(180deg, var(--ref-blue) 0%, #F6F8FC 52%, var(--ref-lavender) 100%);
+      --chat-surface-bg: #FFFFFF;
       --chat-accent-border: rgba(126, 184, 245, 0.35);
       --chat-accent-text: #5B7C9E;
       --chat-send-bg: linear-gradient(145deg, var(--color-sky) 0%, #8FA4E8 52%, #B8A8D4 100%);
@@ -403,18 +403,18 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      padding: 10px 16px;
-      gap: 10px 12px;
-      min-height: 52px;
-      border-bottom: var(--ui-border);
+      padding: 12px 18px;
+      gap: 12px 16px;
+      min-height: 48px;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
       flex-shrink: 0;
-      background: var(--ui-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #FFFFFF;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       position: relative;
       z-index: 2;
       border-radius: 0;
-      box-shadow: 0 4px 24px rgba(9, 132, 227, 0.06);
+      box-shadow: none;
     }
 
     .passage-brand {
@@ -428,11 +428,11 @@
 
     .passage-brand-title {
       font-family: var(--font-sans);
-      font-weight: 700;
-      font-size: clamp(0.85rem, 2.4vw, 1rem);
-      color: var(--text-dark);
-      letter-spacing: -0.03em;
-      line-height: 1.2;
+      font-weight: 600;
+      font-size: clamp(0.82rem, 2.3vw, 0.95rem);
+      color: rgba(55, 71, 79, 0.92);
+      letter-spacing: -0.02em;
+      line-height: 1.3;
       white-space: nowrap;
     }
 
@@ -440,13 +440,14 @@
       grid-column: 2;
       justify-self: center;
       text-align: center;
-      font-size: clamp(0.88rem, 2.2vw, 0.98rem);
-      font-weight: 700;
-      color: var(--text-dark);
+      font-size: clamp(0.8rem, 2vw, 0.88rem);
+      font-weight: 500;
+      color: rgba(84, 110, 122, 0.75);
       font-family: var(--font-sans);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
       line-height: 1.25;
       margin: 0;
+      text-transform: none;
     }
 
     .passage-header .header-meta {
@@ -456,45 +457,45 @@
       align-items: center;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 6px;
+      gap: 8px;
     }
 
     .passage-font-controls {
       display: inline-flex;
       align-items: center;
-      gap: 3px;
-      padding: 2px;
-      background: rgba(255, 255, 255, 0.9);
-      border: var(--ui-border-strong);
-      border-radius: 999px;
-      box-shadow: var(--shadow-sticker-sm);
+      gap: 0;
+      padding: 1px;
+      background: rgba(248, 250, 252, 0.95);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 8px;
+      box-shadow: none;
     }
 
     .btn-passage-font {
-      min-width: 30px;
-      height: 30px;
-      padding: 0 8px;
+      min-width: 28px;
+      height: 28px;
+      padding: 0 7px;
       margin: 0;
       border: none;
-      border-radius: 999px;
+      border-radius: 6px;
       background: transparent;
-      color: var(--text-dark);
+      color: rgba(55, 71, 79, 0.75);
       font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.68rem;
+      font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1;
       cursor: pointer;
-      transition: background 0.15s, color 0.15s, transform 0.15s;
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     .btn-passage-font:hover:not(:disabled) {
-      background: var(--color-sky-soft);
+      background: rgba(15, 23, 42, 0.05);
       color: var(--text-dark);
     }
 
     .btn-passage-font:active:not(:disabled) {
-      transform: scale(0.94);
+      transform: none;
     }
 
     .btn-passage-font:disabled {
@@ -503,36 +504,39 @@
     }
 
     .btn-passage-font.is-active {
-      background: var(--color-sky);
-      color: #fff;
-      box-shadow: 0 1px 4px rgba(62, 120, 180, 0.25);
+      background: rgba(9, 132, 227, 0.1);
+      color: var(--word-galpi-blue);
+      box-shadow: none;
     }
 
     .btn-edit-passage {
-      padding: 6px 10px;
-      background: #fff;
-      color: var(--text-soft);
-      border: var(--ui-border);
-      border-radius: 999px;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      background: transparent;
+      color: rgba(84, 110, 122, 0.75);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 8px;
       font-family: var(--font-sans);
       cursor: pointer;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-sticker-sm);
+      box-shadow: none;
     }
 
     .btn-edit-passage:hover {
-      background: var(--color-sky-soft);
+      background: rgba(15, 23, 42, 0.04);
       color: var(--text-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-sticker);
+      border-color: rgba(15, 23, 42, 0.1);
+      transform: none;
+      box-shadow: none;
     }
 
     .btn-edit-passage .icon-pencil {
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
     }
 
     .passage-content-wrap {
@@ -616,31 +620,60 @@
       pointer-events: auto;
     }
 
-    /* 우하단 FAB 묶음 — 위쪽 안내 말풍선 + 원형 버튼 */
+    /* FAB 묶음 — 기본: 화면 오른쪽 · 세로 중앙 (드래그 시 좌표 저장) */
     .chat-fab-cluster {
       position: fixed;
-      top: auto;
-      bottom: max(20px, env(safe-area-inset-bottom, 0px));
+      top: 50%;
+      bottom: auto;
       right: max(22px, env(safe-area-inset-right, 0px));
       left: auto;
+      transform: translateY(-50%);
       z-index: 1210;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      pointer-events: none;
+      pointer-events: auto;
+      cursor: grab;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .chat-fab-cluster.is-dragging {
+      cursor: grabbing;
+      z-index: 1220;
+    }
+
+    .chat-fab-cluster.is-dragging .chat-drawer-handle {
+      cursor: grabbing;
+    }
+
+    /* 랜딩(setup)일 때 FAB 숨김 — body에 두어도 보이지 않게 */
+    .chat-fab-cluster--inactive {
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    /* 사용자 지정 좌표(드래그 후): 인라인 left/top 사용, 중앙 정렬용 transform 제거 */
+    .chat-fab-cluster.chat-fab-cluster--placed {
+      right: auto !important;
+      bottom: auto !important;
+      transform: none !important;
     }
 
     .chat-fab-cluster .chat-drawer-handle {
       pointer-events: auto;
+      cursor: grab;
     }
 
     /* 작은 말풍선: "같이 읽자!" */
     .chat-fab-prompt {
-      pointer-events: none;
+      pointer-events: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      cursor: grab;
     }
 
     .chat-fab-prompt-bubble {
@@ -781,7 +814,7 @@
       border-bottom: 1px solid var(--chat-accent-border);
       flex-shrink: 0;
       font-family: var(--font-sans);
-      background: linear-gradient(180deg, #FFFFFF 0%, var(--chat-pastel-blue) 100%);
+      background: #FFFFFF;
       position: relative;
       z-index: 1;
     }
@@ -880,7 +913,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      background: var(--chat-surface-bg);
+      background: #FFFFFF;
       position: relative;
       z-index: 1;
     }
@@ -1016,7 +1049,7 @@
       padding: 12px 14px 14px;
       margin-top: 0;
       border-top: 1px solid var(--chat-accent-border);
-      background: linear-gradient(180deg, var(--chat-pastel-lavender) 0%, #FFFFFF 100%);
+      background: #FFFFFF;
       border-radius: 0;
     }
 
@@ -1044,7 +1077,7 @@
       font-size: 0.875rem;
       line-height: 1.5;
       color: var(--text-dark);
-      background: rgba(255, 255, 255, 0.85);
+      background: #FFFFFF;
       transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
       box-shadow: none;
       resize: none;
@@ -1265,10 +1298,10 @@
       .passage-section-title {
         grid-column: 1 / -1;
         grid-row: 2;
-        font-size: clamp(0.82rem, 3.2vw, 0.92rem);
+        font-size: clamp(0.76rem, 3vw, 0.85rem);
       }
-      .btn-edit-passage { padding: 5px 8px; border-radius: 9px; }
-      .btn-edit-passage .icon-pencil { width: 15px; height: 15px; }
+      .btn-edit-passage { width: 30px; height: 30px; border-radius: 7px; }
+      .btn-edit-passage .icon-pencil { width: 14px; height: 14px; }
       .passage-content-wrap { padding: 20px 14px 100px; }
       .passage-inner { padding: 16px 16px; border-radius: 22px; }
       .chat-messages { padding: 10px 12px; gap: 10px; }
@@ -1292,8 +1325,10 @@
       .chat-finish-hint { font-size: 0.68rem; max-width: 260px; }
       .chat-finish-btn { font-size: 0.76rem; padding: 8px 18px; }
       .chat-fab-cluster {
-        bottom: max(16px, env(safe-area-inset-bottom, 0px));
+        top: 50%;
+        bottom: auto;
         right: max(18px, env(safe-area-inset-right, 0px));
+        transform: translateY(-50%);
       }
       .chat-drawer-handle {
         --chat-fab-size: 60px;
@@ -1618,18 +1653,20 @@
         </div>
       </section>
       </div>
-      <div class="chat-fab-cluster">
-        <div class="chat-fab-prompt" aria-hidden="true">
-          <span class="chat-fab-prompt-bubble">같이 읽자!</span>
-        </div>
-        <button type="button" class="chat-drawer-handle" id="chatDrawerHandle" aria-expanded="false" aria-controls="chatDrawer" title="갈피에게 묻기">
-          <span class="chat-fab-icon-wrap" aria-hidden="true">
-            <img src="cgp2.png" alt="" class="chat-fab-galpi-img" width="128" height="128" decoding="async" />
-            <svg class="chat-fab-svg chat-fab-svg--close" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          </span>
-        </button>
-      </div>
     </div>
+  </div>
+
+  <!-- FAB: body 직하 → 뷰포트 기준 fixed (main-view overflow 등에 묶이지 않음). 읽기 화면에서만 표시 -->
+  <div class="chat-fab-cluster chat-fab-cluster--inactive" id="chatFabCluster" role="group" aria-label="갈피 채팅 열기 — 끌어서 위치를 바꿀 수 있어요" aria-hidden="true">
+    <div class="chat-fab-prompt" aria-hidden="true">
+      <span class="chat-fab-prompt-bubble">같이 읽자!</span>
+    </div>
+    <button type="button" class="chat-drawer-handle" id="chatDrawerHandle" aria-expanded="false" aria-controls="chatDrawer" title="갈피에게 묻기">
+      <span class="chat-fab-icon-wrap" aria-hidden="true">
+        <img src="cgp2.png" alt="" class="chat-fab-galpi-img" width="128" height="128" decoding="async" />
+        <svg class="chat-fab-svg chat-fab-svg--close" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </span>
+    </button>
   </div>
 
   <script>
@@ -1642,6 +1679,7 @@
       var btnEditPassage = document.getElementById('btnEditPassage');
       var chatMessages = document.getElementById('chatMessages');
       var chatInput = document.getElementById('chatInput');
+      var chatFabCluster = document.getElementById('chatFabCluster');
 
       var currentPassage = '';
       var chatHistory = [];
@@ -1688,6 +1726,17 @@
         return !currentPassage || !String(currentPassage).trim();
       }
 
+      function setChatFabVisible(visible) {
+        if (!chatFabCluster) return;
+        chatFabCluster.classList.toggle('chat-fab-cluster--inactive', !visible);
+        chatFabCluster.setAttribute('aria-hidden', visible ? 'false' : 'true');
+        if (visible) {
+          try {
+            constrainFabPosition();
+          } catch (e) {}
+        }
+      }
+
       function showSetupView() {
         if (setupView) {
           setupView.classList.remove('hidden');
@@ -1697,6 +1746,7 @@
           mainView.classList.remove('visible');
           mainView.style.display = 'none';
         }
+        setChatFabVisible(false);
       }
 
       function showMainView() {
@@ -1708,6 +1758,7 @@
           mainView.classList.add('visible');
           mainView.style.display = 'flex';
         }
+        setChatFabVisible(true);
       }
 
       (function ensureInitialState() {
@@ -1992,6 +2043,163 @@
       var chatPanelCloseBtn = document.getElementById('chatPanelCloseBtn');
       var chatDrawerOpen = false;
 
+      /* FAB 클러스터 드래그 이동 + 위치 저장 */
+      var fabDrag = {
+        active: false,
+        didDrag: false,
+        startX: 0,
+        startY: 0,
+        originLeft: 0,
+        originTop: 0,
+        pointerId: null,
+        suppressClick: false
+      };
+      /* v2: body 기준 배치로 바뀐 뒤 이전 키의 잘못된 좌표 무시 */
+      var FAB_POS_KEY = 'rpChatFabPos_v2';
+
+      function constrainFabPosition() {
+        if (!chatFabCluster || !chatFabCluster.classList.contains('chat-fab-cluster--placed')) return;
+        var r = chatFabCluster.getBoundingClientRect();
+        var pad = 8;
+        var bw = window.innerWidth;
+        var bh = window.innerHeight;
+        var l = r.left;
+        var t = r.top;
+        if (l < pad) l = pad;
+        if (t < pad) t = pad;
+        if (l + r.width > bw - pad) l = Math.max(pad, bw - pad - r.width);
+        if (t + r.height > bh - pad) t = Math.max(pad, bh - pad - r.height);
+        chatFabCluster.style.left = l + 'px';
+        chatFabCluster.style.top = t + 'px';
+      }
+
+      function syncFabToLeftTopOnce() {
+        if (!chatFabCluster || chatFabCluster.classList.contains('chat-fab-cluster--placed')) return;
+        var r = chatFabCluster.getBoundingClientRect();
+        chatFabCluster.style.left = r.left + 'px';
+        chatFabCluster.style.top = r.top + 'px';
+        chatFabCluster.style.right = 'auto';
+        chatFabCluster.style.bottom = 'auto';
+        chatFabCluster.style.transform = 'none';
+        chatFabCluster.classList.add('chat-fab-cluster--placed');
+      }
+
+      function saveFabPosition() {
+        if (!chatFabCluster || !chatFabCluster.classList.contains('chat-fab-cluster--placed')) return;
+        try {
+          var r = chatFabCluster.getBoundingClientRect();
+          localStorage.setItem(FAB_POS_KEY, JSON.stringify({ left: r.left, top: r.top }));
+        } catch (e) {}
+      }
+
+      function loadFabPosition() {
+        if (!chatFabCluster) return;
+        try {
+          var raw = localStorage.getItem(FAB_POS_KEY);
+          if (!raw) return;
+          var p = JSON.parse(raw);
+          if (typeof p.left !== 'number' || typeof p.top !== 'number') {
+            localStorage.removeItem(FAB_POS_KEY);
+            return;
+          }
+          if (!isFinite(p.left) || !isFinite(p.top)) {
+            localStorage.removeItem(FAB_POS_KEY);
+            return;
+          }
+          var bw = window.innerWidth || 320;
+          var bh = window.innerHeight || 480;
+          /* 잘못 저장된 (0,0) 등 — 좌측 상단 고정처럼 보이는 값 제거 */
+          if (p.left < 4 && p.top < 4) {
+            localStorage.removeItem(FAB_POS_KEY);
+            return;
+          }
+          if (p.left < -2 || p.top < -2 || p.left > bw - 8 || p.top > bh - 8) {
+            localStorage.removeItem(FAB_POS_KEY);
+            return;
+          }
+          chatFabCluster.style.left = p.left + 'px';
+          chatFabCluster.style.top = p.top + 'px';
+          chatFabCluster.style.right = 'auto';
+          chatFabCluster.style.bottom = 'auto';
+          chatFabCluster.style.transform = 'none';
+          chatFabCluster.classList.add('chat-fab-cluster--placed');
+          constrainFabPosition();
+        } catch (e) {
+          try {
+            localStorage.removeItem(FAB_POS_KEY);
+          } catch (e2) {}
+        }
+      }
+
+      function onFabPointerDown(e) {
+        if (!chatFabCluster) return;
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        fabDrag.suppressClick = false;
+        /* pointerdown에서 바로 setPointerCapture 하면 자식 버튼에 click이 안 생길 수 있음 — 드래그로 판명된 뒤에만 캡처 */
+        syncFabToLeftTopOnce();
+        var r = chatFabCluster.getBoundingClientRect();
+        fabDrag.startX = e.clientX;
+        fabDrag.startY = e.clientY;
+        fabDrag.originLeft = r.left;
+        fabDrag.originTop = r.top;
+        fabDrag.active = false;
+        fabDrag.didDrag = false;
+        fabDrag.pointerId = e.pointerId;
+      }
+
+      function onFabPointerMove(e) {
+        if (!chatFabCluster || fabDrag.pointerId !== e.pointerId) return;
+        var dx = e.clientX - fabDrag.startX;
+        var dy = e.clientY - fabDrag.startY;
+        if (!fabDrag.active && (Math.abs(dx) > 6 || Math.abs(dy) > 6)) {
+          fabDrag.active = true;
+          fabDrag.didDrag = true;
+          chatFabCluster.classList.add('is-dragging');
+          try {
+            chatFabCluster.setPointerCapture(e.pointerId);
+          } catch (err) {}
+        }
+        if (fabDrag.active) {
+          e.preventDefault();
+          var nl = fabDrag.originLeft + dx;
+          var nt = fabDrag.originTop + dy;
+          chatFabCluster.style.left = nl + 'px';
+          chatFabCluster.style.top = nt + 'px';
+          chatFabCluster.style.right = 'auto';
+          chatFabCluster.style.bottom = 'auto';
+          chatFabCluster.classList.add('chat-fab-cluster--placed');
+          constrainFabPosition();
+        }
+      }
+
+      function onFabPointerUp(e) {
+        if (!chatFabCluster || fabDrag.pointerId !== e.pointerId) return;
+        try {
+          if (chatFabCluster.hasPointerCapture(e.pointerId)) {
+            chatFabCluster.releasePointerCapture(e.pointerId);
+          }
+        } catch (err) {}
+        chatFabCluster.classList.remove('is-dragging');
+        if (fabDrag.didDrag) {
+          fabDrag.suppressClick = true;
+          saveFabPosition();
+        }
+        fabDrag.active = false;
+        fabDrag.didDrag = false;
+        fabDrag.pointerId = null;
+      }
+
+      if (chatFabCluster) {
+        loadFabPosition();
+        window.addEventListener('resize', function () {
+          constrainFabPosition();
+        });
+        chatFabCluster.addEventListener('pointerdown', onFabPointerDown, true);
+        chatFabCluster.addEventListener('pointermove', onFabPointerMove, true);
+        chatFabCluster.addEventListener('pointerup', onFabPointerUp, true);
+        chatFabCluster.addEventListener('pointercancel', onFabPointerUp, true);
+      }
+
       function setChatDrawerOpen(open) {
         chatDrawerOpen = !!open;
         if (chatDrawer) chatDrawer.classList.toggle('is-open', chatDrawerOpen);
@@ -2025,6 +2233,12 @@
 
       if (chatDrawerHandle) {
         chatDrawerHandle.addEventListener('click', function (e) {
+          if (fabDrag.suppressClick) {
+            e.preventDefault();
+            e.stopPropagation();
+            fabDrag.suppressClick = false;
+            return;
+          }
           e.stopPropagation();
           toggleChatDrawer();
         });
